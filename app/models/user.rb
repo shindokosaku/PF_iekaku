@@ -3,4 +3,18 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :message, dependent: :destroy
+  has_many :question
+
+  validates :nickname, presence: true, uniqueness: true
+  
+
+    # 退会済みかチェックするメソッド
+    def active_for_authentication?
+      super && self.is_active
+    end
+    
+    has_many :addresses, dependent: :destroy
+
 end

@@ -11,6 +11,19 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header style="bavkground-color: blue;">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <image_tag "logo.png", class
+    </header>
+
+    <main>
+
+      <p id="notice"><%= notice %></p>
+      <%= yield %>
+    </main>
+    <footer>
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>

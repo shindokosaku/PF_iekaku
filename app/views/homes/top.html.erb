@@ -1,2 +1,47 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container">
+  <div class="row mt-5">
+    <%= render 'homes/question_new' , locals: { questions: @questions } %>
+  
+    <div class="col-9 offset-1">
+      <div class="row border-dark" style="height:300px;">
+        <div class="col-9 mx-auto">
+          <p class="mt-5 pt-4 align-baseline border border-dark text-center" style="height: 230px;">
+            「iekaku」このサイトは不動産売買に関する悩みを<br>
+             質問形式で回答するサイトです。回答するのは<br>
+             不動産売買を専門で扱っている〇〇会社の社員です。<br>
+             何か質問や悩みがある方は会員登録を行なった後、<br>
+             質問の投稿をお願いします。<br>
+             ※質問は他の方にも閲覧されるため、<br>
+             個人情報に関することにつきましては、<br>
+             チャットでのご相談を承っております。
+          </p>
+        </div>
+      </div>
+      
+      <div class="row ml-2 mb-2">
+        <h2 class="fs-2 font-weight-bold">新着質問</h2>
+      </div>  
+      
+      <div class="row">
+       <ul>
+        <% @questions.each do |question| %>
+          <div class="col-3">
+           <li>
+            <strong><%= question.title %></strong><br>
+            <p><%= question.body %></p><br>
+            <p><%= truncate(question.content, length: 100) %></p>
+           </li>
+        <% end %>
+       </ul>
+      </div>
+      
+      <div class="row justify-content-end">
+        <div class="col-2 offset-10 p-0">
+          <%= link_to 'すべての質問を見る>', questions_path, class:'text-center', style:'text-decoration: underline;' %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,28 @@
+<div class="col-2">
+  <div class="border border-dark" style="min-height: 100px">
+    <p class="text-center border-bottom border-dark mt-1">質問を投稿する</p>
+    <% if user_signed_in? %>
+      <% form_with model: @question, local:true do |form| %>
+        <div>
+          <%= form.label :title, "タイトル" %><br>
+          <%= form.text_field :title, required: true %>
+        </div>
+        <div>
+          <%= form.label :body, "内容" %>
+          <%= form.text_area :body, required: true %>
+        </div>
+        <div>
+          <p>※質問を投稿すると他の方も閲覧が可能になります。<br>
+              そのため、個人が特定できてしまうような質問は<br>
+              チャット（DM）よりご質問ください。
+          </p>
+        </div>
+        <div>
+          <%= form.submit "投稿する" %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>質問を投稿するには<%= link_to 'ログイン', new_user_session_path %>してください。</p>
+    <% end %>
+  </div>
+</div>
