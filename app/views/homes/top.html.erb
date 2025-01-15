@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row mt-5">
-    <%= render 'homes/question_new' , locals: { questions: @questions } %>
+    <%= render 'public/questions/new' , locals: { question: @question } %>
   
-    <div class="col-9 offset-1">
+    <div class="col-8 offset-1">
       <div class="row border-dark" style="height:300px;">
         <div class="col-9 mx-auto">
           <p class="mt-5 pt-4 align-baseline border border-dark text-center" style="height: 230px;">
@@ -29,7 +29,7 @@
            <li>
             <strong><%= question.title %></strong><br>
             <p><%= question.body %></p><br>
-            <p><%= truncate(question.content, length: 100) %></p>
+            <%= truncate(question.body, length: 100) %>
            </li>
         <% end %>
        </ul>

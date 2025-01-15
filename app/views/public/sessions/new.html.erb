@@ -1,0 +1,43 @@
+<% if flash[:alert].present? %>
+  <%= flash[:alert] %>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <h3 class = "col-2 mt-3 mb-5 text-center" style="background-color: #E6E6E6;"> ログイン </h3>
+  </div>
+    
+  <div class="row ml-5">
+    <h5 class = "col-4 text-center" style="background-color: #E6E6E6;">会員の方はこちらからログイン</h5>
+  </div>
+
+  <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+    <div class="my-5">
+      <div class="row justify-content-center mb-3">
+        <div class="col-2"><%= f.label :email ,"メールアドレス", class: "form-label"  %></div>
+        <div class="col-5"><%= f.email_field :email, size:"50x1", autofocus: true, placeholder: "sample@example.com", autocomplete: "email" %></div>
+      </div>
+
+      <div class="row justify-content-center ">
+        <div class="col-2"><%= f.label :password, "パスワード" %></div>
+        <div class="col-5"><%= f.password_field :password, size:"50x1",  autocomplete: "current-password" %></div>
+      </div>
+
+      <div class="col-10 actions text-center mt-5">
+        <%= f.submit "    ログイン    ", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+
+
+  <div class="row ml-5">
+    <h5 class = "col-4 text-center" style="background-color: #E6E6E6;">会員登録がお済みでない方</h5>
+  </div>
+
+  <div class="row ml-5">
+    <div class="col ml-5 pl-5"><%= link_to "こちら", new_user_registration_path %>から新規登録を行ってください</div>
+  </div>
+  <br></br>
+
+
+</div>

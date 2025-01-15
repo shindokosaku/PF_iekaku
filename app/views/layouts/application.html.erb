@@ -11,14 +11,18 @@
   </head>
 
   <body>
-    <header style="bavkground-color: blue;">
+    <header style="background-color: #ADD8E6;">
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark">
-          <image_tag "logo.png", class
+          
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <%= render 'layouts/header' %> 
+          </div>
+        </nav>
+      </div>
     </header>
 
     <main>
-
       <p id="notice"><%= notice %></p>
       <%= yield %>
     </main>

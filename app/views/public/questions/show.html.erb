@@ -1,0 +1,17 @@
+<h1><%= @question.title %></h1>
+
+<p><%= @question.body %></p>
+
+<hr>
+
+<h2>回答一覧</h2>
+<% if @question.question_answers.any? %>
+   <% @question.question_answers.each do |answer| %>
+    <div class="answer-item border-bottom mb-2 pb-2">
+      <p><strong>担当者:</strong> <%= answer.employee.name %></p>
+      <p><%= answer.body %></p>
+    </div>
+  <% end %>
+<% else %>
+  <p>まだ返信がありません。</p>
+<% end %>

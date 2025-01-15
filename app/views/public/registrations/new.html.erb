@@ -3,13 +3,13 @@
   <div class="row">
     <h3 class = "col-3 mt-3 mb-5 text-center" style="background-color: #E6E6E6;">新規会員登録</h3>
   </div>
-    <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
+    <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
 
       <div class="row mb-2">
         <div class="col-3"><%= f.label :nickname ,"ニックネーム" %></div>
         <div class="col-3">
-          <%= f.nickname_field :nickname, autocomplete: "nickname", placeholder: "nickname" %>
+          <%= f.text_field :nickname, autocomplete: "nickname", placeholder: "nickname" %>
           <% if @user.errors[:nickname].any? %>
             <div class="text-danger">
               <%= @user.errors[:nickname].first %>
@@ -44,7 +44,7 @@
     </div>
 
     <div class="row ml-5">
-      <div class="col ml-5 pl-5"><%= link_to "こちら", new_customer_session_path %>からログインしてください</div>
+      <div class="col ml-5 pl-5"><%= link_to "こちら", new_user_session_path %>からログインしてください</div>
     </div>
 
 </div>
