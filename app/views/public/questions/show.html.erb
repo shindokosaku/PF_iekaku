@@ -1,10 +1,17 @@
 <h1><%= @question.title %></h1>
 
 <p><%= @question.body %></p>
-
+  <% if  @question.user == current_user %><!-- 投稿者のみ -->
+    <% if @question.question_answers.any? %> <!-- 返信がある場合 -->
+      <p>※この質問は編集できません（返信済み）</p>
+    <% else %>
+      <%= link_to '編集', edit_question_path(@question), class: 'btn btn-sm btn-outline-success' %>
+      <%= link_to '削除', question_path(@question), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-sm btn-outline-danger' %>
+    <% end %>
+  <% end %>
 <hr>
 
-<h2>回答一覧</h2>
+<h2>回答</h2>
 <% if @question.question_answers.any? %>
    <% @question.question_answers.each do |answer| %>
     <div class="answer-item border-bottom mb-2 pb-2">
