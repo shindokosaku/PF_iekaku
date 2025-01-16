@@ -1,5 +1,6 @@
 class Public::QuestionsController < ApplicationController
-
+  before_action :authenticate_user!, except: [:index, :show]
+  
   def index
     @questions = Question.all.order(created_at: :desc)# 質問を最新順に表示
   end

@@ -2,13 +2,13 @@ module Public
   class UsersController < ApplicationController
 
     before_action :authenticate_user!
-    before_action :authenticate_user!
+    before_action :set_user, only: [:show, :edit, :withdrawal, :update]
 
     def show
-      @user = current_user
+      @questions = @user.questions
     end
+
     def edit
-      @user = current_user
     end
   
     def unsubscribe
@@ -16,7 +16,6 @@ module Public
     end
   
     def withdrawal
-      @user = current_user
       @user.update(is_active: false) # 退会フラグを更新
       reset_session # セッション情報を削除
       redirect_to root_path, notice: '退会処理が完了しました。'
@@ -24,19 +23,23 @@ module Public
   
     def update
       Rails.logger.debug("PARAMS: #{params.inspect}")
-      @user = current_user
       if @user.update(user_params)
-        redirect_to users_my_page_path(@user), notice: '顧客情報が更新されました。'
+        flash[:notice] = "プロフィールが更新されました。"
+        redirect_to user_path(@user)
       else
-        flash.now[:alert] = '更新に失敗しました。入力内容を確認してください。'
+        flash[:alert] = "プロフィールの更新に失敗しました。"
         render :edit
       end
     end
   
     private
-    def user_params
-      params.require(:user).permit(:last_name, :first_name, :email, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number)
+
+    def set_user
+      @user= current_user
     end
-  
+
+    def user_params
+      params.require(:user).permit(:nickname, :email, )
+    end
   end
 end

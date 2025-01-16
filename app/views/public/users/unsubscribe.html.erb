@@ -1,0 +1,20 @@
+<div class="container mt-5">
+ <div class="row justify-content-center mt-5">
+   <h2><strong>本当に退会しますか？</strong></h2>
+ </div>
+ <div class="row justify-content-center text-center mt-5">
+   <div class="col-8 ">
+     <p>退会すると、会員登録情報やこれまで投稿した質問履歴が閲覧できなくなります。</p>
+     <p>チャット機能も利用できなくなります。</p>
+     <p>退会する場合は、「退会する」をクリックしてください。</p>
+   </div>
+ </div>
+ <div class="row justify-content-center mt-5">
+   <div class="col-2"> 
+     <%= link_to '退会しない', users_my_page_path(current_user), class: 'btn btn-outline-success ' %>
+   </div>
+   <div class="col-2">  
+     <%= button_to '退会する', users_withdrawal_users_path, method: :patch, class: 'btn btn-outline-danger ' %>
+   </div>
+ </div>
+</div>

@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :message, dependent: :destroy
-  has_many :question
+  has_many :questions
 
   validates :nickname, presence: true, uniqueness: true
   

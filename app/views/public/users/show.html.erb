@@ -1,3 +1,34 @@
-<h1>マイページ</h1>
-<p>ようこそ、<%= @user.nickname %> さん！</p>
-<p>メールアドレス: <%= @user.email %></p>
+<div class="container mt-5">
+  <h2 class="mb-4">マイページ</h2>
+
+  <div class="card mb-4">
+    <div class="card-header">
+      <strong>プロフィール情報</strong>
+    </div>
+    <div class="card-body">
+      <p><strong>ニックネーム:</strong> <%= @user.nickname %></p>
+      <p><strong>メールアドレス:</strong> <%= @user.email %></p>
+      <%= link_to '編集する', edit_user_path(@user), class: 'btn btn-primary' %>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <strong>投稿した質問一覧</strong>
+    </div>
+    <div class="card-body">
+      <% if @questions.any? %>
+        <ul class="list-unstyled">
+          <% @questions.each do |question| %>
+            <li class="mb-3">
+              <strong><%= link_to question.title, question_path(question) %></strong><br>
+              <small><%= question.created_at.strftime("%Y年%m月%d日 %H:%M") %></small>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>まだ質問を投稿していません。</p>
+      <% end %>
+    </div>
+  </div>
+</div>
