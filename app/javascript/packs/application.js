@@ -13,6 +13,10 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
 
+body {
+  background-image: url("../images/hoge.jpg");
+}
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
