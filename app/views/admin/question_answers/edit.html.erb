@@ -1,0 +1,10 @@
+<h1>回答の編集</h1>
+
+<%= form_with model: [@question, @answer], url: admin_question_answer_path(@question, @answer), method: :patch, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :body, "回答内容" %>
+    <%= f.text_area :body, class: 'form-control', rows: 3 %>
+  </div>
+  <%= f.submit '更新する', class: 'btn btn-primary' %>
+  <%= link_to 'キャンセル', admin_question_path(@question), class: 'btn btn-secondary' %>
+<% end %>

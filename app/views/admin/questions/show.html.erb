@@ -17,10 +17,26 @@
     <div class="answer-item border-bottom mb-2 pb-2">
       <p><strong>担当者:</strong> <%= answer.employee.name %></p>
       <p><%= answer.body %></p>
+
+      <% if answer.admin == current_admin %> <!-- 回答者のみ編集・削除可能 -->
+        <%= link_to '編集', edit_admin_question_answer_path(@question, answer), class: 'btn btn-sm btn-outline-success' %>
+        <%= link_to '削除', admin_question_answer_path(@question, answer), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-sm btn-outline-danger' %>
+      <% end %>
     </div>
   <% end %>
 <% else %>
   <p>まだ返信がありません。</p>
 <% end %>
 
-
+<!-- 管理者のみに回答フォームを表示 -->
+<% if admin_signed_in? %>
+  <hr>
+  <h2>回答を投稿</h2>
+  <%= form_with model: @question, url: admin_user_question_answers_path(@question), local: true do |form| %>
+    <div class="form-group">
+      <%= f.label :body, "回答内容" %>
+      <%= f.text_area :body, required: true, class: "form-control" %>
+    </div>
+    <%= f.submit '回答を投稿', class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
