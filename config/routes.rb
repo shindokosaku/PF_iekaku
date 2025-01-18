@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
  
   
-  devise_for :admins, skip: [:passwords] ,controllers: {
+  devise_for :admins, path: 'admin', skip: [:passwords] ,controllers: {
     registrations: "admin/registrations",
     sessions: "admin/sessions"
   }
@@ -15,15 +15,16 @@ Rails.application.routes.draw do
     resources :question_answers, only: [:new, :index, :show, :create, :edit, :update, :destroy]
     resources :rooms, only: [:index, :show]
     resources :users, only: [:index, :show, :edit, :update]
-    resources :question, only: [:index, :show, :destroy]
+    resources :questions, only: [:index, :show, :destroy]
     resources :room_assignments, only: [:index, :update]
-    resources :admins, only: [:show, :edit, :update]do
+    resources :admin, only: [:show, :edit, :update] do
       collection do
-        get 'admins/unsubscribe'
-        patch 'admins/withdrawal'
-        patch 'admins/attend'
+        get 'my_page'
+        get 'unsubscribe'
+        patch 'withdrawal'
+        patch 'attend'
       end 
-    end  
+    end 
     get 'admins/my_page', to: 'admins#show', as: :admins_my_page
     patch 'admins/information', to: 'admins#update', as: :admins_information_update
     get 'admins/information/edit', to: 'admins#edit', as: :admins_information_edit
@@ -34,6 +35,7 @@ Rails.application.routes.draw do
     resources :questions, only: [:new, :index, :show, :edit, :update, :create, :destroy]
     resources :rooms, only: [:create, :show]
     resources :question_answers, only: [:index, :show]
+
     resources :users, only: [:show, :edit, :update]do
       collection do
         get 'users/unsubscribe'

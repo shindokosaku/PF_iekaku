@@ -5,12 +5,12 @@
 
     <% if admin_signed_in? %>
       <li style="margin-right: 10px;">
-        <%= link_to admins_my_page_path,class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
+        <%= link_to admin_admin_path(current_admin),class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
           <span class="boxed"> マイページ </span>
         <% end %>
       </li>
       <li style="margin-right: 10px;">
-        <%= link_to admins_users_path,class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
+        <%= link_to admin_users_path,class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
           <span class="boxed"> 会員一覧 </span>
         <% end %>
       </li>
@@ -21,7 +21,7 @@
       </li>
       </li>
       <li style="margin-right: 10px;">
-        <%=  link_to rooms_path ,class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
+        <%=  link_to admin_rooms_path ,class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
           <span class="boxed"> ルーム一覧 </span>
         <% end %>
       </li>

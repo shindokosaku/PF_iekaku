@@ -5,7 +5,7 @@ class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
     create_table :admins do |t|
       ## Database authenticatable
     
-      #新規ユーザー登録
+      #新規社員登録
       t.string :last_name , null: false #名前(姓)
       t.string :first_name , null: false #名前(名)
       t.string :last_name_kana , null: false #カナ(姓)
@@ -13,8 +13,11 @@ class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
       t.string :address , null: false #住所
       t.string :affiliated_store , null: false#所属店舗
       t.boolean :work_status ,null: false, default: true #出勤ステータス
+      t.boolean :is_admin_activ ,null: false, default: true#管理者ステータス
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+      t.string :telephone_number, null: false#電話番号
+
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at

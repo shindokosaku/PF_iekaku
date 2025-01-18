@@ -48,8 +48,10 @@ ActiveRecord::Schema.define(version: 2025_01_12_112311) do
     t.string "address", null: false
     t.string "affiliated_store", null: false
     t.boolean "work_status", default: true, null: false
+    t.boolean "is_admin_activ", default: true, null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "telephone_number", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

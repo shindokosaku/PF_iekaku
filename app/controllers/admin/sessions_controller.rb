@@ -1,6 +1,9 @@
-class Public::SessionsController < Devise::SessionsController
-
-  def after_sign_in_path_for(resource)
-    root_path
+class Admin::SessionsController < Devise::SessionsController
+  
+  def restrict_access
+    unless admin_signed_in?
+      redirect_to new_admin_session_path, alert: "アクセス権限がありません。"
+    end
   end
 end
+

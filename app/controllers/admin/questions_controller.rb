@@ -1,5 +1,5 @@
 class Admin::QuestionsController < ApplicationController
-   before_action :authenticate_admin!
+   #before_action :authenticate_admin!
   
       def index
         @questions = Question.order(created_at: :desc)
