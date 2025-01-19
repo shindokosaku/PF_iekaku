@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <h2 class="mb-4">プロフィール編集</h2>
+
+  <%= form_with(model: @admin, local: true) do |f| %>
+
+    <div class="row mb-2">
+      <div class="col-3">氏名</div>
+      <div class="col-3"><%= f.text_field :last_name, class: "form-control", style: "border-radius: 5px; border: 1px solid black;" %></div>
+      <div class="col-3"><%= f.text_field :first_name, class: "form-control", style: "border-radius: 5px; border: 1px solid black;" %></div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-3">フリガナ</div>
+      <div class="col-3"><%= f.text_field :last_name_kana, class: "form-control", style: "border-radius: 5px; border: 1px solid black;" %></div>
+      <div class="col-3"><%= f.text_field :first_name_kana, class: "form-control", style: "border-radius: 5px; border: 1px solid black;" %></div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-3">所属店舗</div>
+      <div class="col-3"><%= f.text_field :affiliated_store, class: "form-control", style: "border-radius: 5px; border: 1px solid black;" %></div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-3">住所</div>
+      <div class="col-3"><%= f.text_field :address, class: "form-control", style: "border-radius: 5px; border: 1px solid black;" %></div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-3">電話番号</div>
+      <div class="col-3"><%= f.text_field :telephone_number, class: "form-control", style: "border-radius: 5px; border: 1px solid black;" %></div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-3">メールアドレス</div>
+      <div class="col-3"><%= f.text_field :email, class: "form-control", style: "border-radius: 5px; border: 1px solid black;" %></div>
+    </div>
+    <div class="row mb-2">
+      <%= f.label :work_status, "出勤ステータス" %>
+      <%= f.select :work_status, [['出勤中', true], ['退勤済み', false]] %>
+    </div>
+    <div class="row mb-2">
+      <%= f.label :is_admin_active, "アカウントステータス" %>
+      <%= f.select :is_active, [['有効', true], ['退職済み', false]] %>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-3"></div>
+      <div class="col-3 d-flex gap-2 mt-2">
+        <%= f.submit '   編集内容を保存   ', class: "btn btn-sm btn-success me-2" %>
+      </div>
+        <div style="width: 60px;"></div>
+      <div class="col-5 ">
+        <%= link_to "退会する",  unsubscribe_admin_admin_path(@admin), class: "btn btn-sm btn-danger" %>
+      </div>
+    </div>   
+<% end %>
+   

@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <h2 class="mb-4">管理者情報</h2>
+
+  <div class="mb-4">
+    <p>名前: <%= @admin.last_name %> <%= @admin.first_name %></p>
+    <p>フリガナ: <%= @admin.last_name_kana %> <%= @admin.first_name_kana %></p>
+    <p>所属店舗: <%= @admin.affiliated_store %></p>
+    <p>住所: <%= @admin.address %></p>
+    <p>電話番号: <%= @admin.telephone_number %></p>
+    <p>メールアドレス: <%= @admin.email %></p>
+    <p>出勤ステータス: <%= @admin.work_status == 1 ? '出勤中' : '退勤済み' %></p>
+    <p>アカウントステータス: <%= @admin.is_admin_activ ? '在職' : '退職済み' %></p>
+    <%= link_to '編集する', edit_admin_admin_path(@admin), class: 'btn btn-primary' %>
+  </div>

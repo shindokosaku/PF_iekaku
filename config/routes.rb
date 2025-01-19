@@ -17,9 +17,8 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
     resources :questions, only: [:index, :show, :destroy]
     resources :room_assignments, only: [:index, :update]
-    resources :admin, only: [:show, :edit, :update] do
-      collection do
-        get 'my_page'
+    resources :admins, only: [:show, :edit, :update] do
+      member do
         get 'unsubscribe'
         patch 'withdrawal'
         patch 'attend'
