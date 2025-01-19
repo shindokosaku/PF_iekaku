@@ -4,7 +4,7 @@ class Public::QuestionAnswersController < ApplicationController
   def create
     @question = Question.find(params[:question_id])
     @answer = @question.question_answers.new(question_answer_params)
-    @answer.admin_user = current_admin_user 
+    @answer.admin = current_admin 
     
     if @answer.save
       flash[:notice] = "回答を投稿しました。"
