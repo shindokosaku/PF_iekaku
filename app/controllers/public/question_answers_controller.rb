@@ -13,7 +13,7 @@ class Public::QuestionAnswersController < ApplicationController
       flash[:alert] = '回答の投稿に失敗しました。'
       render "admin/questions/show"
     end  
-
+  end
   def edit
   end
 
