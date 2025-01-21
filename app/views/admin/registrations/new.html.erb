@@ -2,6 +2,9 @@
   <div class="row">
     <h3 class = "col-3 mt-3 mb-5 text-center" style="background-color: #E6E6E6;">新規社員登録</h3>
   </div>
+
+  <%= render 'admin/shared/error_message', object: @admin %>
+
     <%= form_with model: @admin, url: admin_registration_path, local: true do |f| %>
 
       <div class="row mb-2">

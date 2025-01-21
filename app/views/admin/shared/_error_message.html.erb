@@ -1,8 +1,8 @@
-<% if resource.errors.any? %>
-  <div class="error_messages">
-    <h2><%= pluralize(resource.errors.count, "エラー") %>が発生しました:</h2>
+<% if object.errors.any? %>
+  <div class="alert alert-danger">
+    <h4>入力にエラーがあります:</h4>
     <ul>
-      <% resource.errors.full_messages.each do |message| %>
+      <% object.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>

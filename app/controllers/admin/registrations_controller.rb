@@ -14,6 +14,6 @@ class Admin::RegistrationsController < Devise::RegistrationsController
     end
     # 新規登録後のリダイレクト先を変更
     def after_sign_up_path_for(resource)
-      admin_admin_path # マイページへのルート名をここに記述
+      admin_admin_path(resource.id) # resource に新しく登録された admin が格納
     end
 end

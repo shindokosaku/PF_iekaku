@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mt-5 ">
-    <div class="col-3">
+    <div class="col-4">
       <%= render 'public/questions/new' , locals: { question: @question } %>
         <div class="border border-dark" style="min-height: 50px; min-width: px; padding: 10px;">
           <p class="text-center border-bottom border-dark mt-1">チャットで質問する</p>
@@ -8,6 +8,8 @@
               <div>
                 <%= link_to 'チャットルームへ', rooms_path, method: :post, class: 'btn btn-primary' %>
               </div>
+            <% else %>
+              <p>質問を投稿するには<%= link_to '新規登録orログイン', new_user_session_path %>してください。</p>
             <% end %>
         </div>
     </div>

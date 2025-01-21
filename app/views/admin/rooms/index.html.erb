@@ -1,0 +1,25 @@
+<h2>チャット希望者一覧</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ユーザー名</th>
+      <th>チャット開始時間</th>
+      <th>対応ステータス</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @rooms.each do |room| %>
+    <tr>
+      <td><%= User.find(room.user_id).nickname %></td>
+      <td><%= room.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+      <td> <%= room.response_status %></td>
+      <td>
+        <%= button_to 'ルームに入る', admin_room_path(room), method: :patch, class: 'btn btn-primary' %>
+        <%= link_to 'ルーム詳細', admin_room_path(room), class: 'btn btn-secondary' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

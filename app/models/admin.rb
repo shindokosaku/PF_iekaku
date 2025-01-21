@@ -14,4 +14,5 @@ class Admin < ApplicationRecord
   validates :affiliated_store, presence: true
   validates :address, presence: true
   validates :telephone_number, presence: true
+  
 end

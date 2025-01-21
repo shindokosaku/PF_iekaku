@@ -12,9 +12,11 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :rooms, only: [:index, :show, :update]
     resources :users, only: [:index, :show, :edit, :update]
     resources :room_assignments, only: [:index, :update]
+    resources :rooms, only: [:index, :show, :update] do
+      resources :messages, only: [:create, :destroy]
+    end
     resources :questions, only: [:index, :show, :destroy] do
       resources :question_answers, only: [:create, :edit, :update, :destroy]
     end
@@ -33,9 +35,10 @@ Rails.application.routes.draw do
   
   scope module: :public do
     resources :questions, only: [:new, :index, :show, :edit, :update, :create, :destroy]
-    resources :rooms, only: [:create, :show]
     resources :question_answers, only: [:index, :show]
-
+    resources :rooms, only: [:create, :show] do
+      resources :messages, only: [:create, :destroy]
+    end
     resources :users, only: [:show, :edit, :update]do
       collection do
         get 'users/unsubscribe'
@@ -50,6 +53,6 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get '/homes/top' => 'homes#top', as: 'top'
   get '/homes/about' => 'homes#about', as: 'about'
-  resources :messages, only: [:create, :destroy]
+  
 
 end

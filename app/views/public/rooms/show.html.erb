@@ -1,6 +1,21 @@
-<h2>チャットルーム<h2>
-<% @messages.each do |message| %>
-  <div>
-    <p><%= message.content %></p>
-  </div>
+<h2>チャットルーム</h2>
+<p>メッセージ一覧</p>
+<div class="messages">
+  <% @messages.each do |message| %>
+    <% if message.user %>
+      <div class="message user-message">
+        <strong><%= message.user.nickname %>様</strong>: <%= message.body %>
+      </div>
+    <% elsif message.admin %>
+      <div class="message admin-message">
+        <strong>社員 <%= message.admin.lastname %></strong>: <%= message.body %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<h4>新しいメッセージを送信</h4>
+<%= form_with model: [@room, Message.new], url: room_messages_path(@room), method: :post do |f| %>
+  <%= f.text_area :body, rows: 3, placeholder: 'メッセージを入力してください' %>
+  <%= f.submit '送信', class: 'btn btn-primary' %>
 <% end %>
