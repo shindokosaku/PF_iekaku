@@ -4,7 +4,7 @@
   <div class="question-item border-bottom mb-3 pb-2">
     <!-- 質問タイトルをリンクに -->
     <h3>
-      <%= link_to question.title, question_path(question) %>
+      <%= link_to question.title, admin_question_path(question) %>
     </h3>
     <!-- 質問内容を表示 -->
     <p>
@@ -16,3 +16,6 @@
     </p>
   </div>
 <% end %>
+<div class="d-flex justify-content-center">
+  <%= paginate @questions %>
+</div>

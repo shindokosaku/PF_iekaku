@@ -1,8 +1,9 @@
-class Public::QuestionAnswersController < ApplicationController
-  before_action :authenticate_admin! # 管理者のみ許可
+class Admin::QuestionAnswersController < ApplicationController
+  before_action :set_question
+  before_action :set_answer, only: [:edit, :update, :destroy]
+  
   
   def create
-    @question = Question.find(params[:question_id])
     @answer = @question.question_answers.new(question_answer_params)
     @answer.admin = current_admin 
     
@@ -45,5 +46,9 @@ private
 
   def question_answer_params
     params.require(:question_answer).permit(:body)
+  end
+
+  def authenticate_admin!
+    redirect_to new_user_session_path unless current_user&.admin?
   end
 end

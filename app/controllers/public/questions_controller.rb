@@ -1,8 +1,8 @@
 class Public::QuestionsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :edit, :show]
   
   def index
-    @questions = Question.all.order(created_at: :desc)# 質問を最新順に表示
+    @questions = Question.order(created_at: :desc).page(params[:page])
   end
 
   def create

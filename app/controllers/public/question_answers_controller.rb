@@ -43,7 +43,7 @@ private
     @answer = @question.question_answers.find(params[:id])
   end
 
-  def question_answer_params
+  def answer_params
     params.require(:question_answer).permit(:body)
   end
 end

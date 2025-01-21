@@ -12,11 +12,12 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :question_answers, only: [:new, :index, :show, :create, :edit, :update, :destroy]
-    resources :rooms, only: [:index, :show]
+    resources :rooms, only: [:index, :show, :update]
     resources :users, only: [:index, :show, :edit, :update]
-    resources :questions, only: [:index, :show, :destroy]
     resources :room_assignments, only: [:index, :update]
+    resources :questions, only: [:index, :show, :destroy] do
+      resources :question_answers, only: [:create, :edit, :update, :destroy]
+    end
     resources :admins, only: [:show, :edit, :update] do
       member do
         get 'unsubscribe'

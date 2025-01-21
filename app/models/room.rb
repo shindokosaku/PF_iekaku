@@ -1,5 +1,6 @@
 class Room < ApplicationRecord
-
-  belongs_to :admin
-  has_many :message, dependent: :destroy
+  
+  #`admin_id`がなくてもroomが作成可能
+  belongs_to :admin, optional: true
+  has_many :messages, dependent: :destroy
 end

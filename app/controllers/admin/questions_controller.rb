@@ -1,16 +1,16 @@
 class Admin::QuestionsController < ApplicationController
-   #before_action :authenticate_admin!
-  
+  before_action :set_question, only: [:show, :destroy]
+
       def index
-        @questions = Question.order(created_at: :desc)
+        @questions = Question.order(created_at: :desc).page(params[:page])
       end
   
       def show
-        @question = Question.find(params[:id])
+        @answers = @question.question_answers.includes(:admin)
+        @answer = @question.question_answers.new # 空の回答オブジェクトを初期化
       end
   
       def destroy
-        @question = Question.find(params[:id])
         if @question.destroy
           redirect_to admin_questions_path, notice: "質問を削除しました。"
         else
@@ -19,10 +19,11 @@ class Admin::QuestionsController < ApplicationController
       end
   
       private
-  
+
+      def set_question
+        @question = Question.find(params[:id])
+      end
       def authenticate_admin!
-        # 管理者認証を行うためのロジックを追加
         redirect_to new_user_session_path unless current_user&.admin?
       end
-
 end

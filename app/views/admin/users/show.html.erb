@@ -1,0 +1,28 @@
+<h1 class="mt-4 mb-5"><%= @user.nickname %> さんの詳細</h1>
+
+<div class="user-details">
+  <p><strong>ニックネーム:</strong> <%= @user.nickname %></p>
+  <p><strong>メールアドレス:</strong> <%= @user.email %></p>
+  <p><strong>メモ:</strong> <%= @user.memo.present? ? @user.memo : 'なし' %></p>
+</div>
+
+<h2 class="mt-5 mb-3">投稿した質問一覧</h2>
+<% if @user.questions.any? %>
+  <% @user.questions.each do |question| %>
+    <div class="question-item border-bottom mb-3 pb-2">
+      <h3>
+        <%= link_to question.title, question_path(question) %>
+      </h3>
+      <p>
+        <%= truncate(question.body, length: 100) %>
+      </p>
+      <p class="text-muted">
+        投稿日時: <%= l(question.created_at, format: :short) %>
+      </p>
+    </div>
+  <% end %>
+<% else %>
+  <p>まだ質問が投稿されていません。</p>
+<% end %>
+
+<%= link_to '編集する', edit_admin_user_path(@user), class: 'btn btn-primary mt-4' %>
