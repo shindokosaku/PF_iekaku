@@ -1,4 +1,4 @@
-module CorporateUser
+module CorporateUserNamespace
   class QuestionAnswersController < ApplicationController
     before_action :set_question
     before_action :set_answer, only: [:edit, :update, :destroy]

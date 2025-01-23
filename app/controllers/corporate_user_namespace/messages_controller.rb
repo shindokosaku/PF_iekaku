@@ -1,4 +1,4 @@
-module CorporateUser
+module CorporateUserNamespace
   class MessagesController < ApplicationController
     before_action :set_room
   

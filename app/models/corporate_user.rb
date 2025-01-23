@@ -1,12 +1,12 @@
-class CorporateUserModel  < ApplicationRecord
+class CorporateUser  < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :message, dependent: :destroy
-  has_many :room, dependent: :destroy
-  has_many :question_answer
+  has_many :messages, dependent: :destroy
+  has_many :rooms, dependent: :destroy
+  has_many :question_answers
   validates :last_name, presence: true
   validates :first_name, presence: true
   validates :last_name_kana, presence: true

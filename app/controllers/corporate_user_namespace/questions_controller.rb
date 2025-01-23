@@ -1,4 +1,4 @@
-module CorporateUser
+module CorporateUserNamespace
   class QuestionsController < ApplicationController
     before_action :set_question, only: [:show, :destroy]
 

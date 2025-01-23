@@ -1,4 +1,4 @@
-module CorporateUser
+module CorporateUserNamespace
   class CorporateUsersController < ApplicationController
     before_action :set_corporate_user, only: [:show, :edit, :update, :withdrawal]
 
@@ -36,4 +36,3 @@ module CorporateUser
     end
   end
 end
-

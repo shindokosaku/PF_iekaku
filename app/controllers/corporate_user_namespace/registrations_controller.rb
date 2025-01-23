@@ -1,6 +1,10 @@
-module CorporateUser
+module CorporateUserNamespace
   class RegistrationsController < Devise::RegistrationsController
     before_action :configure_permitted_parameters, if: :devise_controller?
+
+      def new
+        @corporate_user = CorporateUser.new
+      end
 
       protected
       # 追加のパラメーターを許可

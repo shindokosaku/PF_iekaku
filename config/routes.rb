@@ -1,17 +1,19 @@
 Rails.application.routes.draw do
  
   
-  devise_for :corporate_users, path: 'corporate_user', skip: [:passwords] ,controllers: {
-    registrations: "corporate_user/registrations",
-    sessions: "corporate_user/sessions"
+  devise_for :corporate_users, path: 'corporate_user', controllers: {
+     registrations: "corporate_user_namespace/registrations",
+     sessions: "corporate_user_namespace/sessions",
+     passwords: "corporate_user_namespace/passwords"
   }
 
-  devise_for :users, skip: [:passwords], controllers: {
+  devise_for :users, controllers: {
     registrations: "public/registrations",
-    sessions: 'public/sessions'
+    sessions: 'public/sessions',
+    passwords: "public/passwords"
   }
 
-  namespace :corporate_user do
+  namespace :corporate_user_namespace do
     resources :users, only: [:index, :show, :edit, :update]
     resources :room_assignments, only: [:index, :update]
     resources :rooms, only: [:index, :show, :update] do
