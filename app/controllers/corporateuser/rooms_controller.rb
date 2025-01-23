@@ -1,4 +1,4 @@
-class Corporate_user::RoomsController < ApplicationController
+class CorporateUser::RoomsController < ApplicationController
   before_action :set_room, only: [:show, :update]
   def index
     @rooms = Room.all.includes(:user)

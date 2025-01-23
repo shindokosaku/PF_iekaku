@@ -1,4 +1,4 @@
-class Admin::RegistrationsController < Devise::RegistrationsController
+class CorporateUser::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, if: :devise_controller?
 
     protected
@@ -14,6 +14,6 @@ class Admin::RegistrationsController < Devise::RegistrationsController
     end
     # 新規登録後のリダイレクト先を変更
     def after_sign_up_path_for(resource)
-      admin_admin_path(resource.id) # resource に新しく登録された admin が格納
+      corporate_user_corporate_user_path(resource.id) # resource に新しく登録された corporate_user が格納
     end
 end

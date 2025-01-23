@@ -1,4 +1,4 @@
-class Corporate_user::Corporate_usersController < ApplicationController
+class CorporateUser::CorporateUsersController < ApplicationController
   before_action :set_corporate_user, only: [:show, :edit, :update, :withdrawal]
 
   def show

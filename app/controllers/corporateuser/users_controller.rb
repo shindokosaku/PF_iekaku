@@ -1,4 +1,4 @@
-class Corporate_user::UsersController < ApplicationController
+class CorporateUser::UsersController < ApplicationController
   before_action :authenticate_corporate_user!
   before_action :set_user, only: [:show, :edit, :update]
 

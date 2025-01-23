@@ -1,4 +1,4 @@
-class Corporate_user::QuestionsController < ApplicationController
+class CorporateUser::QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :destroy]
 
       def index

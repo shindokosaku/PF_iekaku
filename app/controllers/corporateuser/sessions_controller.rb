@@ -1,4 +1,4 @@
-class Corporate_user::SessionsController < Devise::SessionsController
+class CorporateUser::SessionsController < Devise::SessionsController
   
   def restrict_access
     unless corporate_user_signed_in?
