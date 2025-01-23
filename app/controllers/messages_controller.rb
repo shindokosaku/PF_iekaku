@@ -7,8 +7,8 @@ class MessagesController < ApplicationController
     # 現在の送信者を設定
     if current_user
       @message.user_id = current_user.id
-    elsif current_admin
-      @message.admin_id = current_admin.id
+    elsif current_corporate_user
+      @message.corporate_user_id = current_corporate_user.id
     else
       flash[:alert] = "送信者が特定できません"
       redirect_to root_path and return
@@ -41,8 +41,8 @@ class MessagesController < ApplicationController
   end
 
   def room_view_path(room)
-    if current_admin
-      "admin/rooms"
+    if current_corporate_user
+      "corporate_user/rooms"
     else
       "public/rooms"
     end

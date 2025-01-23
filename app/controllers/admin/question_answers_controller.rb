@@ -1,18 +1,18 @@
-class Admin::QuestionAnswersController < ApplicationController
+class Corporate_user::QuestionAnswersController < ApplicationController
   before_action :set_question
   before_action :set_answer, only: [:edit, :update, :destroy]
   
   
   def create
     @answer = @question.question_answers.new(question_answer_params)
-    @answer.admin = current_admin 
+    @answer.corporate_user = current_corporate_user 
     
     if @answer.save
       flash[:notice] = "回答を投稿しました。"
-      redirect_to admin_question_path(@question)
+      redirect_to corporate_user_question_path(@question)
     else
       flash[:alert] = '回答の投稿に失敗しました。'
-      render "admin/questions/show"
+      render "corporate_user/questions/show"
     end  
   end
   def edit
@@ -21,7 +21,7 @@ class Admin::QuestionAnswersController < ApplicationController
   def update
     if @answer.update(question_answer_params)
       flash[:notice] = "回答を更新しました。"
-      redirect_to admin_question_path(@question)
+      redirect_to corporate_user_question_path(@question)
     else
       flash[:alert] = "回答の更新に失敗しました。"
       render :edit
@@ -31,7 +31,7 @@ class Admin::QuestionAnswersController < ApplicationController
   def destroy
     @answer.destroy
     flash[:notice] = "回答を削除しました。"
-    redirect_to admin_question_path(@question)
+    redirect_to corporate_user_question_path(@question)
   end
 
 private
@@ -48,7 +48,7 @@ private
     params.require(:question_answer).permit(:body)
   end
 
-  def authenticate_admin!
-    redirect_to new_user_session_path unless current_user&.admin?
+  def authenticate_corporate_user!
+    redirect_to new_user_session_path unless current_user&.corporate_user?
   end
 end

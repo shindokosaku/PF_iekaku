@@ -1,5 +1,5 @@
-class Admin::AdminsController < ApplicationController
-  before_action :set_admin, only: [:show, :edit, :update, :withdrawal]
+class Corporate_user::Corporate_usersController < ApplicationController
+  before_action :set_corporate_user, only: [:show, :edit, :update, :withdrawal]
 
   def show
   end
@@ -9,9 +9,9 @@ class Admin::AdminsController < ApplicationController
 
   def update
     Rails.logger.debug("PARAMS: #{params.inspect}")
-    if @admin.update(admin_params)
+    if @corporate_user.update(corporate_user_params)
       flash[:notice] = "社員情報が更新されました。"
-      redirect_to admin_admin_path(@user)
+      redirect_to corporate_user_corporate_user_path(@user)
     else
       flash[:alert] = "社員情報の更新に失敗しました。"
       render :edit
@@ -19,19 +19,19 @@ class Admin::AdminsController < ApplicationController
   end
 
   def withdrawal
-    @admin.update(is_active: false) # 退会フラグを更新
+    @corporate_user.update(is_active: false) # 退会フラグを更新
     reset_session # セッション情報を削除
     redirect_to root_path, notice: '退会処理が完了しました。'
   end
 
   private
 
-  def set_admin
-    @admin = Admin.find(params[:id])
+  def set_corporate_user
+    @corporate_user = Corporate_user.find(params[:id])
   end
 
-  def admin_params
-    params.require(:admin).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :affiliated_store, :address, :telephone_number, :status)
+  def corporate_user_params
+    params.require(:corporate_user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :affiliated_store, :address, :telephone_number, :status)
   end
 end
 

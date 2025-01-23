@@ -1,9 +1,9 @@
-class Admin::RoomsController < ApplicationController
+class Corporate_user::RoomsController < ApplicationController
   before_action :set_room, only: [:show, :update]
   def index
     @rooms = Room.all.includes(:user)
     @rooms = Room.order(created_at: :desc).page(params[:page])
-    @rooms = Room.where(admin: nil)
+    @rooms = Room.where(corporate_user: nil)
   end
 
   def show
@@ -16,9 +16,9 @@ class Admin::RoomsController < ApplicationController
 
   # 管理者がルームに入る
   def update
-    if @room.update(admin: current_admin)
+    if @room.update(corporate_user: current_corporate_user)
       flash[:notice] = "チャットに参加しました"
-      redirect_to admin_room_path(@room)
+      redirect_to corporate_user_room_path(@room)
     else
       flash[:alert] = "ルームに入ることができません"
       render :show

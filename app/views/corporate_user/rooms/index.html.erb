@@ -16,8 +16,8 @@
       <td><%= room.created_at.strftime("%Y-%m-%d %H:%M") %></td>
       <td> <%= room.response_status %></td>
       <td>
-        <%= button_to 'ルームに入る', admin_room_path(room), method: :patch, class: 'btn btn-primary' %>
-        <%= link_to 'ルーム詳細', admin_room_path(room), class: 'btn btn-secondary' %>
+        <%= button_to 'ルームに入る', corporate_user_room_path(room), method: :patch, class: 'btn btn-primary' %>
+        <%= link_to 'ルーム詳細', corporate_user_room_path(room), class: 'btn btn-secondary' %>
       </td>
     </tr>
   <% end %>

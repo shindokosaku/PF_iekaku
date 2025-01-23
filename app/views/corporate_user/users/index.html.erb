@@ -3,7 +3,7 @@
 <% @users.each do |user| %>
   <div class="user-item border-bottom mb-3 pb-2">
     <h3>
-      <%= link_to user.nickname, admin_user_path(user) %>
+      <%= link_to user.nickname, corporate_user_user_path(user) %>
     </h3>
     <p>
       <%= user.email %>

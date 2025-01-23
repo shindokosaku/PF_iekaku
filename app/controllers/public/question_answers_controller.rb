@@ -1,17 +1,17 @@
 class Public::QuestionAnswersController < ApplicationController
-  before_action :authenticate_admin! # 管理者のみ許可
+  before_action :authenticate_corporate_user! # 管理者のみ許可
   
   def create
     @question = Question.find(params[:question_id])
     @answer = @question.question_answers.new(question_answer_params)
-    @answer.admin_user = current_admin_user 
+    @answer.corporate_user_user = current_corporate_user_user 
     
     if @answer.save
       flash[:notice] = "回答を投稿しました。"
-      redirect_to admin_question_path(@question)
+      redirect_to corporate_user_question_path(@question)
     else
       flash[:alert] = '回答の投稿に失敗しました。'
-      render "admin/questions/show"
+      render "corporate_user/questions/show"
     end  
   end
   def edit
@@ -20,7 +20,7 @@ class Public::QuestionAnswersController < ApplicationController
   def update
     if @answer.update(question_answer_params)
       flash[:notice] = "回答を更新しました。"
-      redirect_to admin_question_path(@question)
+      redirect_to corporate_user_question_path(@question)
     else
       flash[:alert] = "回答の更新に失敗しました。"
       render :edit
@@ -30,7 +30,7 @@ class Public::QuestionAnswersController < ApplicationController
   def destroy
     @answer.destroy
     flash[:notice] = "回答を削除しました。"
-    redirect_to admin_question_path(@question)
+    redirect_to corporate_user_question_path(@question)
   end
 
 private

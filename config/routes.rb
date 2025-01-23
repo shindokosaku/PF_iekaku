@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
  
   
-  devise_for :admins, path: 'admin', skip: [:passwords] ,controllers: {
-    registrations: "admin/registrations",
-    sessions: "admin/sessions"
+  devise_for :corporate_users, path: 'corporate_user', skip: [:passwords] ,controllers: {
+    registrations: "corporate_user/registrations",
+    sessions: "corporate_user/sessions"
   }
 
   devise_for :users, skip: [:passwords], controllers: {
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
-  namespace :admin do
+  namespace :corporate_user do
     resources :users, only: [:index, :show, :edit, :update]
     resources :room_assignments, only: [:index, :update]
     resources :rooms, only: [:index, :show, :update] do
@@ -20,16 +20,16 @@ Rails.application.routes.draw do
     resources :questions, only: [:index, :show, :destroy] do
       resources :question_answers, only: [:create, :edit, :update, :destroy]
     end
-    resources :admins, only: [:show, :edit, :update] do
+    resources :corporate_users, only: [:show, :edit, :update] do
       member do
         get 'unsubscribe'
         patch 'withdrawal'
         patch 'attend'
       end 
     end 
-    get 'admins/my_page', to: 'admins#show', as: :admins_my_page
-    patch 'admins/information', to: 'admins#update', as: :admins_information_update
-    get 'admins/information/edit', to: 'admins#edit', as: :admins_information_edit
+    get 'corporate_users/my_page', to: 'corporate_users#show', as: :corporate_users_my_page
+    patch 'corporate_users/information', to: 'corporate_users#update', as: :corporate_users_information_update
+    get 'corporate_users/information/edit', to: 'corporate_users#edit', as: :corporate_users_information_edit
     get '/' => 'homes#top'
   end
   

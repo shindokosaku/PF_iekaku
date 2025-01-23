@@ -3,9 +3,9 @@
     <h3 class = "col-3 mt-3 mb-5 text-center" style="background-color: #E6E6E6;">新規社員登録</h3>
   </div>
 
-  <%= render 'admin/shared/error_message', object: @admin %>
+  <%= render 'corporate_user/shared/error_message', object: @corporate_user %>
 
-    <%= form_with model: @admin, url: admin_registration_path, local: true do |f| %>
+    <%= form_with model: @corporate_user, url: corporate_user_registration_path, local: true do |f| %>
 
       <div class="row mb-2">
         <div class="col-2">名前</div>
@@ -64,7 +64,7 @@
     </div>
 
     <div class="row ml-5">
-      <div class="col ml-5 pl-5"><%= link_to "こちら", new_admin_session_path %>からログインしてください</div>
+      <div class="col ml-5 pl-5"><%= link_to "こちら", new_corporate_user_session_path %>からログインしてください</div>
     </div>
 
 </div>

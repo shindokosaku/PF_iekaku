@@ -1,5 +1,5 @@
-class Admin::UsersController < ApplicationController
-  before_action :authenticate_admin!
+class Corporate_user::UsersController < ApplicationController
+  before_action :authenticate_corporate_user!
   before_action :set_user, only: [:show, :edit, :update]
 
   def index
@@ -14,7 +14,7 @@ class Admin::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to admin_user_path(@user), notice: '顧客情報が更新されました。'
+      redirect_to corporate_user_user_path(@user), notice: '顧客情報が更新されました。'
     else
       flash.now[:alert] = '更新に失敗しました。入力内容を確認してください。'
       render :edit

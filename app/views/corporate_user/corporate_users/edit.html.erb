@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <h2 class="mb-4">プロフィール編集</h2>
 
-  <%= form_with(model: @admin, local: true) do |f| %>
+  <%= form_with(model: @corporate_user, local: true) do |f| %>
 
     <div class="row mb-2">
       <div class="col-3">氏名</div>
@@ -34,7 +34,7 @@
       <%= f.select :work_status, [['出勤中', true], ['退勤済み', false]] %>
     </div>
     <div class="row mb-2">
-      <%= f.label :is_admin_active, "アカウントステータス" %>
+      <%= f.label :is_corporate_user_active, "アカウントステータス" %>
       <%= f.select :is_active, [['有効', true], ['退職済み', false]] %>
     </div>
 
@@ -45,7 +45,7 @@
       </div>
         <div style="width: 60px;"></div>
       <div class="col-5 ">
-        <%= link_to "退会する",  unsubscribe_admin_admin_path(@admin), class: "btn btn-sm btn-danger" %>
+        <%= link_to "退会する",  unsubscribe_corporate_user_corporate_user_path(@corporate_user), class: "btn btn-sm btn-danger" %>
       </div>
     </div>   
 <% end %>

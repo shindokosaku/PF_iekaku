@@ -6,9 +6,9 @@
       <div class="message user-message">
         <strong><%= message.user.nickname %>様</strong>: <%= message.body %>
       </div>
-    <% elsif message.admin %>
-      <div class="message admin-message">
-        <strong>社員 <%= message.admin.lastname %></strong>: <%= message.body %>
+    <% elsif message.corporate_user %>
+      <div class="message corporate_user-message">
+        <strong>社員 <%= message.corporate_user.lastname %></strong>: <%= message.body %>
       </div>
     <% end %>
   <% end %>

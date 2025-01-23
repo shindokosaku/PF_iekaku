@@ -1,8 +1,8 @@
 <h2>回答を投稿する</h2>
 <%= form_with(model: [@question, QuestionAnswer.new], local: true) do |form| %>
   <div>
-    <%= form.label :admin_id, "担当者" %><br>
-    <%= form.collection_select :admin_id, Admin.all, :id, :name, prompt: "担当者を選択" %>
+    <%= form.label :corporate_user_id, "担当者" %><br>
+    <%= form.collection_select :corporate_user_id, Corporate_user.all, :id, :name, prompt: "担当者を選択" %>
   </div>
   <div>
     <%= form.label :body, "回答内容" %><br>
