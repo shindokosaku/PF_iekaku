@@ -21,6 +21,7 @@ class MessagesController < ApplicationController
       flash[:alert] = "メッセージの送信に失敗しました"
       render "rooms/show"
     end
+  end
 
   def destroy
     @message = @room.messages.find(params[:id])
