@@ -1,32 +1,38 @@
-class CorporateUser::UsersController < ApplicationController
-  before_action :authenticate_corporate_user!
-  before_action :set_user, only: [:show, :edit, :update]
+module CorporateUser
+  class CorporateUsersController < ApplicationController
+    before_action :set_corporate_user, only: [:show, :edit, :update, :withdrawal]
 
-  def index
-    @users = User.order(created_at: :desc).page(params[:page])
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-    if @user.update(user_params)
-      redirect_to corporate_user_user_path(@user), notice: '顧客情報が更新されました。'
-    else
-      flash.now[:alert] = '更新に失敗しました。入力内容を確認してください。'
-      render :edit
+    def show
     end
-  end
 
-private
+    def edit
+    end
 
-  def set_user
-    @user = User.find(params[:id])
-  end
-  def user_params
-    params.require(:user).permit(:nickname, :email, :memo)
+    def update
+      Rails.logger.debug("PARAMS: #{params.inspect}")
+      if @corporate_user.update(corporate_user_params)
+        flash[:notice] = "社員情報が更新されました。"
+        redirect_to corporate_user_corporate_user_path(@user)
+      else
+        flash[:alert] = "社員情報の更新に失敗しました。"
+        render :edit
+      end
+    end
+
+    def withdrawal
+      @corporate_user.update(is_active: false) # 退会フラグを更新
+      reset_session # セッション情報を削除
+      redirect_to root_path, notice: '退会処理が完了しました。'
+    end
+
+    private
+
+    def set_corporate_user
+      @corporate_user = Corporate_user.find(params[:id])
+    end
+
+    def corporate_user_params
+      params.require(:corporate_user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :affiliated_store, :address, :telephone_number, :status)
+    end
   end
 end

@@ -1,5 +1,6 @@
-class CorporateUser::QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :destroy]
+module CorporateUser
+  class QuestionsController < ApplicationController
+    before_action :set_question, only: [:show, :destroy]
 
       def index
         @questions = Question.order(created_at: :desc).page(params[:page])
@@ -26,4 +27,5 @@ class CorporateUser::QuestionsController < ApplicationController
       def authenticate_corporate_user!
         redirect_to new_user_session_path unless current_user&.corporate_user?
       end
+  end
 end
