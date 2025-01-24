@@ -1,22 +1,25 @@
 Rails.application.routes.draw do
  
   
-  devise_for :corporate_users, path: 'corporate_user', controllers: {
-     registrations: "corporate_user_namespace/registrations",
-     sessions: "corporate_user_namespace/sessions",
-     passwords: "corporate_user_namespace/passwords"
+  devise_for :corporate_users, path: 'admin', controllers: {
+     registrations: "admin/registrations",
+     sessions: "admin/sessions",
+     #passwords: "corporate_user_namespace/passwords"
   }
 
   devise_for :users, controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions',
-    passwords: "public/passwords"
+    #passwords: "public/passwords"
   }
 
-  namespace :corporate_user_namespace do
+  namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
     resources :room_assignments, only: [:index, :update]
     resources :rooms, only: [:index, :show, :update] do
+      member do
+        patch :enter_room  # これでルームの更新に加えて「enter_room」が追加
+      end
       resources :messages, only: [:create, :destroy]
     end
     resources :questions, only: [:index, :show, :destroy] do

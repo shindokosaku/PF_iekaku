@@ -1,4 +1,4 @@
-module CorporateUserNamespace
+module Admin
   class RegistrationsController < Devise::RegistrationsController
     before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -19,7 +19,7 @@ module CorporateUserNamespace
       end
       # 新規登録後のリダイレクト先を変更
       def after_sign_up_path_for(resource)
-        corporate_user_corporate_user_path(resource.id) # resource に新しく登録された corporate_user が格納
+        admin_corporate_user_path(resource.id) # resource に新しく登録された corporate_user が格納
       end
   end
 end

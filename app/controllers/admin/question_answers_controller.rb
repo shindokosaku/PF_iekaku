@@ -1,4 +1,4 @@
-module CorporateUserNamespace
+module Admin
   class QuestionAnswersController < ApplicationController
     before_action :set_question
     before_action :set_answer, only: [:edit, :update, :destroy]
@@ -10,10 +10,10 @@ module CorporateUserNamespace
     
       if @answer.save
         flash[:notice] = "回答を投稿しました。"
-        redirect_to corporate_user_question_path(@question)
+        redirect_to admin_question_path(@question)
       else
         flash[:alert] = '回答の投稿に失敗しました。'
-        render "corporate_user/questions/show"
+        render "admin/questions/show"
       end  
     end
 
@@ -23,7 +23,7 @@ module CorporateUserNamespace
     def update
       if @answer.update(question_answer_params)
         flash[:notice] = "回答を更新しました。"
-        redirect_to corporate_user_question_path(@question)
+        redirect_to admin_question_path(@question)
       else
         flash[:alert] = "回答の更新に失敗しました。"
         render :edit
@@ -33,7 +33,7 @@ module CorporateUserNamespace
     def destroy
       @answer.destroy
       flash[:notice] = "回答を削除しました。"
-      redirect_to corporate_user_question_path(@question)
+      redirect_to admin_question_path(@question)
     end
 
     private

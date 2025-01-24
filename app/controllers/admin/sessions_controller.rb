@@ -1,4 +1,4 @@
-module CorporateUserNamespace
+module Admin
   class SessionsController < Devise::SessionsController
   
     def new
@@ -7,7 +7,7 @@ module CorporateUserNamespace
 
     def restrict_access
       unless corporate_user_signed_in?
-        redirect_to new_corporate_user_session_path, alert: "アクセス権限がありません。"
+        redirect_to new_admin_session_path, alert: "アクセス権限がありません。"
       end
     end
   end

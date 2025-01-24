@@ -42,7 +42,7 @@ class MessagesController < ApplicationController
 
   def room_view_path(room)
     if current_corporate_user
-      "corporate_user/rooms"
+      "admin/rooms"
     else
       "public/rooms"
     end

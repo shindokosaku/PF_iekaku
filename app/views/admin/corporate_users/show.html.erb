@@ -8,7 +8,7 @@
     <p>住所: <%= @corporate_user.address %></p>
     <p>電話番号: <%= @corporate_user.telephone_number %></p>
     <p>メールアドレス: <%= @corporate_user.email %></p>
-    <p>出勤ステータス: <%= @corporate_user.work_status == 1 ? '出勤中' : '退勤済み' %></p>
-    <p>アカウントステータス: <%= @corporate_user.is_corporate_user_activ ? '在職' : '退職済み' %></p>
-    <%= link_to '編集する', edit_corporate_user_corporate_user_path(@corporate_user), class: 'btn btn-primary' %>
+    <p>出勤ステータス: <%= @corporate_user.work_status ? '出勤中' : '退勤済み' %></p>
+    <p>アカウントステータス: <%= @corporate_user.is_corporate_user_active ? '在職' : '退職済み' %></p>
+    <%= link_to '編集する', edit_admin_corporate_user_path(@corporate_user), class: 'btn btn-primary' %>
   </div>

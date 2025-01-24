@@ -19,8 +19,8 @@
       <p><%= answer.body %></p>
 
       <% if answer.corporate_user == current_corporate_user %> <!-- 回答者のみ編集・削除可能 -->
-        <%= link_to '編集', edit_corporate_user_question_question_answer_path(@question, answer), class: 'btn btn-sm btn-outline-success' %>
-        <%= link_to '削除', corporate_user_question_question_answer_path(@question, answer), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-sm btn-outline-danger' %>
+        <%= link_to '編集', edit_admin_question_question_answer_path(@question, answer), class: 'btn btn-sm btn-outline-success' %>
+        <%= link_to '削除', admin_question_question_answer_path(@question, answer), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-sm btn-outline-danger' %>
       <% end %>
     </div>
   <% end %>
@@ -32,7 +32,7 @@
 <% if corporate_user_signed_in? %>
   <hr>
   <h2>回答を投稿</h2>
-   <%= form_with(model: [@question, @answer], url: corporate_user_question_question_answers_path(@question), local: true) do |f| %>
+   <%= form_with(model: [@question, @answer], url: admin_question_question_answers_path(@question), local: true) do |f| %>
     <div>
       <%= f.label :body, "回答内容" %>
       <%= f.text_area :body, required: true, class: "form-control" %>

@@ -1,4 +1,4 @@
-module CorporateUserNamespace
+module Admin
   class QuestionsController < ApplicationController
     before_action :set_question, only: [:show, :destroy]
 
@@ -13,9 +13,9 @@ module CorporateUserNamespace
   
       def destroy
         if @question.destroy
-          redirect_to corporate_user_questions_path, notice: "質問を削除しました。"
+          redirect_to admin_questions_path, notice: "質問を削除しました。"
         else
-          redirect_to corporate_user_questions_path, alert: "質問の削除に失敗しました。"
+          redirect_to admin_questions_path, alert: "質問の削除に失敗しました。"
         end
       end
   

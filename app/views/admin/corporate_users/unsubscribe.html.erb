@@ -10,10 +10,10 @@
  </div>
  <div class="row justify-content-center mt-5">
    <div class="col-2"> 
-     <%= link_to '退会しない',corporate_user_corporate_user_path(current_corporate_user), class: 'btn btn-outline-success ' %>
+     <%= link_to '退会しない',admin_corporate_user_path(current_corporate_user), class: 'btn btn-outline-success ' %>
    </div>
    <div class="col-2">  
-     <%= button_to '退会する', withdrawal_corporate_user_corporate_user_path, method: :patch, class: 'btn btn-outline-danger ' %>
+     <%= button_to '退会する', withdrawal_admin_corporate_user_path, method: :patch, class: 'btn btn-outline-danger ' %>
    </div>
  </div>
 </div>

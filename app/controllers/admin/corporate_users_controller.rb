@@ -1,4 +1,4 @@
-module CorporateUserNamespace
+module Admin
   class CorporateUsersController < ApplicationController
     before_action :set_corporate_user, only: [:show, :edit, :update, :withdrawal]
 
@@ -9,10 +9,10 @@ module CorporateUserNamespace
     end
 
     def update
-      Rails.logger.debug("PARAMS: #{params.inspect}")
+      #Rails.logger.debug("PARAMS: #{params.inspect}")
       if @corporate_user.update(corporate_user_params)
         flash[:notice] = "社員情報が更新されました。"
-        redirect_to corporate_user_corporate_user_path(@user)
+        redirect_to admin_corporate_user_path(@corporate_user)
       else
         flash[:alert] = "社員情報の更新に失敗しました。"
         render :edit
@@ -28,11 +28,12 @@ module CorporateUserNamespace
     private
 
     def set_corporate_user
-      @corporate_user = Corporate_user.find(params[:id])
+      @corporate_user = CorporateUser.find(params[:id])
     end
 
     def corporate_user_params
-      params.require(:corporate_user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :affiliated_store, :address, :telephone_number, :status)
+      params.require(:corporate_user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :affiliated_store, :address, :telephone_number, :work_status, :is_corporate_user_active)
     end
   end
 end
+
