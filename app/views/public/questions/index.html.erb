@@ -1,21 +1,30 @@
-<h1 class="mt-4 mb-5">質問一覧</h1>
-
-<% @questions.each do |question| %>
-  <div class="question-item border-bottom mb-3 pb-2">
-    <!-- 質問タイトルをリンクに -->
-    <h3>
-      <%= link_to question.title, question_path(question) %>
-    </h3>
-    <!-- 質問内容を表示 -->
-    <p>
-      <%= truncate(question.body, length: 100) %>
-    </p>
-    <!-- 返信数を表示 -->
-    <p class="text-muted">
-      返信: <%= question.question_answers.count %>
-    </p>
+<div class="container mt-4">
+  <div class="text-center mb-5">
+    <h1 class="position-relative d-inline-block px-4 py-2 bg-light border border-dark rounded shadow-lg">
+      <span class="text-dark fw-bold">質問一覧</span>
+    </h1>
+    <p class="text-muted mt-2">不動産に関する質問を一覧表示しています。興味のある質問を選んで回答をご覧ください。</p>
   </div>
-<% end %>
-<div class="d-flex justify-content-center">
-  <%= paginate @questions %>
+
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <% @questions.each do |question| %>
+        <div class="question-item border-bottom mb-3 pb-2">
+          <h3>
+            <%= link_to question.title, question_path(question) %>
+          </h3>
+          <p>
+            <%= truncate(question.body, length: 100) %>
+          </p>
+          <p class="text-muted">
+            返信: <%= question.question_answers.count %>
+          </p>
+        </div>
+      <% end %>
+
+      <div class="d-flex justify-content-center">
+        <%= paginate @questions %>
+      </div>
+    </div>
+  </div>
 </div>

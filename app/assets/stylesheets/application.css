@@ -13,7 +13,94 @@
  *= require_tree .
  *= require_self
  */
+
+
  .highlight {
   background-color: yellow;
   font-weight: bold;
+}
+
+/* about_view */
+.about-section {
+  position: relative;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #f6f8fa, #eaeef3);
+  overflow: hidden;
+}
+
+.about-section::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(173, 216, 230, 0.3); /* 中央の大きな円の薄いブルー */
+  z-index: 1;
+}
+
+.circle {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  z-index: 2;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* 色付き円の背景 */
+.circle.top-left {
+  background: rgba(255, 204, 204, 0.8); /* 薄いピンク */
+  top: 10%;
+  left: 15%;
+}
+
+.circle.top-right {
+  background: rgba(204, 229, 255, 0.8); /* 薄い青 */
+  top: 10%;
+  right: 15%;
+}
+
+.circle.bottom-left {
+  background: rgba(204, 255, 204, 0.8); /* 薄い緑 */
+  bottom: 10%;
+  left: 15%;
+}
+
+.circle.bottom-right {
+  background: rgba(255, 255, 204, 0.8); /* 薄い黄色 */
+  bottom: 10%;
+  right: 15%;
+}
+
+.content {
+  position: relative;
+  z-index: 3; /* 背景より手前に表示 */
+  text-align: center;
+  color: #333;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  max-width: 650px;
+  margin: 0 auto;
+  padding-top: 20px;
 }

@@ -20,7 +20,7 @@
         </nav>
         <div class="search"style="text-align: right; padding-right: 30px;">
           <%= form_with url: search_path, method: :get, local: true do |f| %>  
-             <%= f.text_field :keyword, placeholder: "Search", class: "form-control", style: "display: inline-block; width: auto;" %>
+             <%= f.text_field :keyword, placeholder: "気になるワードを検索", class: "form-control", style: "display: inline-block; width: auto;" %>
              <%= button_tag(type: 'submit', class: "btn btn-primary", style: "padding: 5px 10px; font-size: 14px;") do %>
                <i class="fa-solid fa-magnifying-glass"></i> 検索
              <% end %>
