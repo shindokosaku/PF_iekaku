@@ -5,4 +5,9 @@ class Question < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true
+
+  def self.looks(search, word)
+    search == "partial_match"
+    @question = Question.where("body LIKE?","%#{word}%")
+  end
 end

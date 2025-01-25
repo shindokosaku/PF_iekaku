@@ -1,32 +1,43 @@
 <div class="container">
-  <div class="row mt-5 ">
-    <div class="col-4">
-      <%= render 'public/questions/new' , locals: { question: @question } %>
-        <div class="border border-dark" style="min-height: 50px; min-width: px; padding: 10px;">
-          <p class="text-center border-bottom border-dark mt-1">チャットで質問する</p>
-            <% if user_signed_in? %>     
-              <div>
-                <%= link_to 'チャットルームへ', rooms_path, method: :post, class: 'btn btn-primary' %>
-              </div>
-            <% else %>
-              <p>質問を投稿するには<%= link_to '新規登録orログイン', new_user_session_path %>してください。</p>
-            <% end %>
+  <div class="row mt-5">
+    <div class="col-md-5">
+      <div class="border border-dark p-3" style="height: auto; margin-right: 10px;">
+        <div class="mb-3">
+          <%= render 'public/questions/new', locals: { question: @question } %>
         </div>
+
+        <div>
+          <p class="border-bottom border-dark pb-2 text-center" style="margin-bottom: 10px;">チャットで質問する</p>
+          <% if user_signed_in? %>
+            <div class="text-center">
+              <%= link_to 'チャットルームへ', rooms_path, method: :post, class: 'btn btn-primary' %>
+            </div>
+          <% else %>
+            <p class="text-align: left; word-wrap: break-word; line-height: 1.6;">
+              ルームに入るには
+              <%= link_to '新規登録orログイン', new_user_session_path %>が必要です。
+            </p>
+          <% end %>
+        </div>
+      </div>
     </div>
-  
-    <div class="col-7 offset-1">
-      <p class="mt-2 pt-4 align-baseline border border-dark text-center" style="height: 230px;">
-       「iekaku」このサイトは不動産売買に関する悩みを<br>
-        質問形式で回答するサイトです。回答するのは<br>
-        不動産売買を専門で扱っている〇〇会社の社員です。<br>
-        何か質問や悩みがある方は会員登録を行なった後、<br>
-        質問の投稿をお願いします。<br>
-        ※質問は他の方にも閲覧されるため、<br>
-        個人情報に関することにつきましては、<br>
-        チャットでのご相談を承っております。
-      </p>
+
+    <div class="col-md-7">
+      <div class="border border-dark p-4 text-center" style="width: 100%; max-width: 600px; margin: auto;">
+        <p class="m-0">
+          「iekaku」このサイトは不動産売買に関する悩みを<br>
+          質問形式で回答するサイトです。回答するのは<br>
+          不動産売買を専門で扱っている〇〇会社の社員です。<br>
+          何か質問や悩みがある方は会員登録を行なった後、<br>
+          質問の投稿をお願いします。<br>
+          ※質問は他の方にも閲覧されるため、<br>
+          個人情報に関することにつきましては、<br>
+          チャットでのご相談を承っております。
+        </p>
+      </div>
     </div>
   </div>
+
   <div class="row mt-5 mb-1">
     <h2 class="fs-2 font-weight-bold">新着質問</h2>
       <ul>

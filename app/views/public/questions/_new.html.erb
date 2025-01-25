@@ -1,22 +1,23 @@
-<div class=>
-  <div class="border border-dark" style="min-height: 30px; max-width: 300px; padding: 10px;">
-    <p class="text-center border-bottom border-dark mt-1">質問を投稿する</p>
-    <% if user_signed_in? %>
-      <%= form_with model: @question, url: questions_path, local:true do |form| %>
-        <div>
-          <%= form.label :title, "タイトル" %><br>
-          <%= form.text_field :title, required: true, class: "form-control", style: "margin-bottom: 20px;" %>
-        </div>
-        <div>
-          <%= form.label :body, "内容" %><br>
-          <%= form.text_area :body, required: true, class: "form-control", style: "margin-bottom: 20px;" %>
-        </div>
-        <div>
-          <%= form.submit "投稿する", class: "btn btn-primary" %>
-        </div>
-      <% end %>
-    <% else %>
-      <p>質問を投稿するには<%= link_to '新規登録orログイン', new_user_session_path %>してください。</p>
+<div class="border border-dark p-3" style="width: 100%; padding: 20px;">
+  <p class="text-center border-bottom border-dark mt-1 mb-4">質問を投稿する</p>
+  <% if user_signed_in? %>
+    <%= form_with model: @question, url: questions_path, local:true do |form| %>
+      <div class="mb-3">
+        <%= form.label :title, "タイトル" %><br>
+        <%= form.text_field :title, required: true, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :body, "内容" %><br>
+        <%= form.text_area :body, required: true, class: "form-control" %>
+      </div>
+      <div class="text-center">
+        <%= form.submit "投稿する", class: "btn btn-primary" %>
+      </div>
     <% end %>
-  </div>
+  <% else %>
+    <p class="text-center">
+      質問投稿は
+      <%= link_to '新規登録orログイン', new_user_session_path %>が必要です。
+    </p>
+  <% end %>
 </div>

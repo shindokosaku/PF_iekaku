@@ -1,0 +1,31 @@
+<div class="search-results">
+  <h2>検索結果: "<%= @keyword %>"</h2>
+  <p>ヒット件数: <%= @total_count %></p>
+
+  <% if @total_count.zero? %>
+    <p>該当する結果はありません。</p>
+  <% else %>
+    <% if @questions.present? %>
+    <h3>質問</h3>
+    <ul>
+      <% @questions.each do |question| %>
+        <li>
+          <%= link_to highlight_keyword(question.title, @keyword), question_path(question) %><br>
+          <small><%= highlight_keyword(question.body, @keyword) %></small>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+    <% if @question_answers.present? %>
+      <h3>質問への回答</h3>
+      <ul>
+        <% @question_answers.each do |answer| %>
+          <li>
+            <%= highlight_keyword(answer.body, @keyword) %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+</div>
