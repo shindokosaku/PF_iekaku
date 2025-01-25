@@ -13,7 +13,7 @@ class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
       t.string :address , null: false #住所
       t.string :affiliated_store , null: false#所属店舗
       t.boolean :work_status ,null: false, default: true #出勤ステータス
-      t.boolean :is_admin_activ ,null: false, default: true#管理者ステータス
+      t.boolean :is_admin_active ,null: false, default: true#管理者ステータス
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
       t.string :telephone_number, null: false#電話番号
