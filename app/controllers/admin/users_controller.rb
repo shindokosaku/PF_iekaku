@@ -7,6 +7,8 @@ module Admin
     end
 
     def show
+      @user.questions.page(params[:page]).per(5)
+      @questions = @user.questions.page(params[:page]).per(5)
     end
 
     def edit
