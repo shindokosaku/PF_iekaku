@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   def top
-    @questions = Question.order(created_at: :desc).limit(5)
+    @questions = Question.order(created_at: :desc).limit(6)
     @question = Question.new
   end
 

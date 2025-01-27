@@ -1,5 +1,5 @@
 <h1><%= @question.title %></h1>
-
+<p><strong>質問者:</strong> <%= @question.user.nickname %></p>
 <p><%= @question.body %></p>
   <% if  @question.user == current_user %><!-- 投稿者のみ -->
     <% if @question.question_answers.any? %> <!-- 返信がある場合 -->

@@ -2,6 +2,12 @@ class Public::MessagesController < ApplicationController
   before_action :set_room
 
   def create
+    message = Message.new(message_params)
+    if message.body.blank?
+      flash[:alert] = "メッセージを入力してください"
+      redirect_to room_path(@room) and return
+    end
+
     message = @room.messages.build(message_params.merge(user: current_user))
     if message.save
       redirect_to room_path(@room), notice: 'メッセージが送信されました。'

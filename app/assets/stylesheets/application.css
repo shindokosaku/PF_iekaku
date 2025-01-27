@@ -104,3 +104,106 @@
   margin: 0 auto;
   padding-top: 20px;
 }
+
+
+/* top_view */
+.link-hover {
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.link-hover:hover {
+  color: #0056b3; /* ホバー時の色 */
+  text-shadow: 0 0 5px rgba(0, 86, 179, 0.7); /* ホバー時の光る効果 */
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+h2.text-center {
+  font-size: 2rem;
+  font-weight: bold;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* flash-message */
+.flash-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1050; /* モーダルなどと重ならないよう調整 */
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #fff;
+
+  &.alert-success {
+    background-color: #28a745; /* 成功: グリーン */
+  }
+
+  &.alert-danger {
+    background-color: #dc3545; /* エラー: レッド */
+  }
+
+  &.alert-info {
+    background-color: #17a2b8; /* 情報: ブルー */
+  }
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* 画面全体の高さ */
+  overflow: hidden;
+  position: relative;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  background-color: #f9f9f9;
+}
+
+.message {
+  margin-bottom: 10px;
+  max-width: 60%; /* 最大幅を60%に設定 */
+}
+
+.user-message .message-content {
+  background-color: #17b66f; /* 緑色 */
+  color: #333;
+  padding: 10px;
+  border-radius: 15px;
+  width: fit-content;
+}
+
+.user-message {
+  margin-left: auto; /* 右寄せ */
+  text-align: right;
+}
+
+.corporate_user-message .message-content {
+  background-color: #d0e7ff; /* 青色 */
+  color: #333;
+  padding: 10px;
+  border-radius: 15px;
+  width: fit-content;
+
+.corporate_user-message {
+  margin-right: auto; /* 左寄せ */
+  text-align: left;
+}
+
+.message-form {
+  position: sticky;
+  bottom: 10px; /* 少し上に調整 */
+  background-color: #fff;
+  padding: 10px 15px;
+  border-top: 1px solid #ddd;
+  z-index: 1;
+}

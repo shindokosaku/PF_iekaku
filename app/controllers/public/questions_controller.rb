@@ -11,7 +11,9 @@ class Public::QuestionsController < ApplicationController
     if @question.save
       redirect_to questions_path, notice: '質問が投稿されました。'
     else
-      render :homes/top, alert: "質問の投稿に失敗しました。"
+      flash.now[:alert] = "質問の投稿に失敗しました。"  # 失敗時のフラッシュメッセージ
+      render :homes_top  # 失敗時に現在のページを再レンダリング
+
     end
   end
 

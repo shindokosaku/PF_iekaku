@@ -4,7 +4,7 @@ module Admin
 
     def index
       @rooms = Room.all.includes(:user)
-      @rooms = Room.order(created_at: :desc).page(params[:page])
+      @rooms = Room.order(created_at: :desc).page(params[:page]).per(5)
     end
 
     def show
@@ -14,18 +14,23 @@ module Admin
 
     # 管理者がルームに入る
     def update
-      if @room.update(corporate_user: current_corporate_user)
-        flash[:notice] = "チャットに参加しました"
-        redirect_to admin_room_path(@room)
+      if @room.corporate_user.nil? 
+        if @room.update(corporate_user: current_corporate_user)
+          flash[:notice] = "チャットに参加しました"
+          redirect_to admin_room_path(@room)
+        else
+          flash[:alert] = "ルームに入ることができません"
+          render :show
+        end
       else
-        flash[:alert] = "ルームに入ることができません"
-        render :show
+        flash[:alert] = "すでに他のユーザーまたは社員が参加しています"
+        redirect_to admin_room_path(@room)
       end
     end
 
-    # 管理者がルームに入った際に「対応済み」に変更する
+
     def enter_room
-      if @room.update(response_status: '対応済み')
+      if @room.update(response_status: '対応済み', corporate_user_id:current_corporate_user.id)
         flash[:notice] = "対応済みにしました"
         redirect_to admin_room_path(@room)
       else
@@ -37,7 +42,11 @@ module Admin
     private
 
     def set_room
-      @room = Room.find(params[:id])
+      @room = Room.find_by(id: params[:id])
+      unless @room
+        flash[:alert] = "指定されたルームは存在しません"
+        redirect_to admin_rooms_path
+      end
     end
   end
 end

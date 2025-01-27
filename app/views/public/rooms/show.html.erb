@@ -1,21 +1,28 @@
 <h2>チャットルーム</h2>
-<p>メッセージ一覧</p>
-<div class="messages">
-  <% @messages.each do |message| %>
-    <% if message.user %>
-      <div class="message user-message">
-        <strong><%= message.user.nickname %>様</strong>: <%= message.body %>
-      </div>
-    <% elsif message.corporate_user %>
-      <div class="message corporate_user-message">
-        <strong>社員 <%= message.corporate_user.lastname %></strong>: <%= message.body %>
+<div class="chat-container">
+  <div class="messages">
+    <% @messages.each do |message| %>
+      <% if message.user %>
+        <div class="message user-message ">
+          <strong><%= message.user.nickname %>様</strong>: <%= message.body %>
+        </div>
+      <% elsif message.corporate_user %>
+        <div class="message corporate_user-message ">
+          <strong>社員 <%= message.corporate_user.lastname %></strong>: <%= message.body %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="message-form">
+    <%= form_with model: [@room, Message.new], url: room_messages_path(@room), method: :post do |f| %>
+      <div class="form-group">
+        <%= f.text_area :body, rows: 3, placeholder: 'メッセージを入力してください', class: 'form-control' %>
+      </div>  
+      <div class="text-right mt-2">
+        <%= f.submit '送信', class: 'btn btn-primary' %>
       </div>
     <% end %>
-  <% end %>
+  </div>
 </div>
 
-<h4>新しいメッセージを送信</h4>
-<%= form_with model: [@room, Message.new], url: room_messages_path(@room), method: :post do |f| %>
-  <%= f.text_area :body, rows: 3, placeholder: 'メッセージを入力してください' %>
-  <%= f.submit '送信', class: 'btn btn-primary' %>
-<% end %>

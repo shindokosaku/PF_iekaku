@@ -15,8 +15,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
-    resources :room_assignments, only: [:index, :update]
-    resources :rooms, only: [:index, :show, :update] do
+    resources :rooms, only: [:index, :show, :update, :destroy] do
       member do
         patch :enter_room  # これでルームの更新に加えて「enter_room」が追加
       end
@@ -41,7 +40,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :questions, only: [:new, :index, :show, :edit, :update, :create, :destroy]
     resources :question_answers, only: [:index, :show]
-    resources :rooms, only: [:create, :show] do
+    resources :rooms, only: [:create, :show, :destroy] do
       resources :messages, only: [:create, :destroy]
     end
     resources :users, only: [:show, :edit, :update]do

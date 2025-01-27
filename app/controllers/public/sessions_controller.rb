@@ -3,4 +3,18 @@ class Public::SessionsController < Devise::SessionsController
       root_path
     end
   
+    def create
+      if user_signed_in?
+        flash[:notice] = "ログインしました。"
+        redirect_to root_path
+      else
+        flash[:alert] = "ログインに失敗しました。"
+        render :new
+      end
+    end
+  
+    def destroy
+      flash[:notice] = "ログアウトしました。"
+      redirect_to root_path
+    end
 end
