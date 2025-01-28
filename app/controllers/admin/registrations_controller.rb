@@ -19,7 +19,8 @@ module Admin
       end
       # 新規登録後のリダイレクト先を変更
       def after_sign_up_path_for(resource)
-        admin_corporate_user_path(resource.id) # resource に新しく登録された corporate_user が格納
+        flash[:notice] = "社員登録が完了しました"
+        admin_corporate_user_path(resource.id) 
       end
   end
 end
