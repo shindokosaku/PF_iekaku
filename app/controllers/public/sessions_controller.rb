@@ -12,9 +12,10 @@ class Public::SessionsController < Devise::SessionsController
         render :new
       end
     end
-  
+
     def destroy
-      flash[:notice] = "ログアウトしました。"
+      reset_session
+      flash[:notice] = "ログアウトしました"  
       redirect_to root_path
     end
 end

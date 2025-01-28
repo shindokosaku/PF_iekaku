@@ -4,13 +4,11 @@ Rails.application.routes.draw do
   devise_for :corporate_users, path: 'admin', controllers: {
      registrations: "admin/registrations",
      sessions: "admin/sessions",
-     #passwords: "corporate_user_namespace/passwords"
   }
 
   devise_for :users, controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions',
-    #passwords: "public/passwords"
   }
 
   namespace :admin do

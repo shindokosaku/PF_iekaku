@@ -8,7 +8,7 @@
         </div>
       <% elsif message.corporate_user %>
         <div class="message corporate_user-message ">
-          <strong>社員 <%= message.corporate_user.lastname %></strong>: <%= message.body %>
+          <strong>社員 <%= message.corporate_user.last_name %></strong>: <%= message.body %>
         </div>
       <% end %>
     <% end %>

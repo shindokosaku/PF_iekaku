@@ -2,7 +2,11 @@ ja:
   devise:
     sessions:
       signed_in: 'ログインしました。'
-      signed_out: 'ログアウトしました。'
+      signed_out: 'ログアウトしました。' 
+      user:
+        signed_out: 'ユーザーとしてログアウトしました。' 
+      corporate_user:
+        signed_out: '社員としてログアウトしました'
     registrations:
       signed_up: '新規登録が完了しました。'
       updated: '情報が更新されました。'
