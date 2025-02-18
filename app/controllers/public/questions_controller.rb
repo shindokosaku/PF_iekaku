@@ -49,6 +49,19 @@ class Public::QuestionsController < ApplicationController
     end
   end
 
+  def toggle_helpful
+    @question = Question.find(params[:id])
+    mark = @question.helpful_marks.find_by(user_id: current_user&.id, ip_address: request.remote_ip)
+
+    if mark
+      mark.destroy
+    else
+      @question.helpful_marks.create(user_id: current_user&.id, ip_address: request.remote_ip)
+    end
+
+    render json: { count: @question.helpful_marks.count }
+  end
+
   private
 
   def question_params

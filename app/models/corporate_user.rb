@@ -7,6 +7,8 @@ class CorporateUser  < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :rooms, dependent: :destroy
   has_many :question_answers
+  has_many :helpful_marks, dependent: :destroy
+  
   validates :last_name, presence: true
   validates :first_name, presence: true
   validates :last_name_kana, presence: true

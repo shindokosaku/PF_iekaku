@@ -2,6 +2,7 @@ class Question < ApplicationRecord
   paginates_per 5
   belongs_to :user
   has_many :question_answers, dependent: :destroy
+  has_many :helpful_marks, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true

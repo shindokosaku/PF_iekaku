@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_01_24_073002) do
+ActiveRecord::Schema.define(version: 2025_01_29_070918) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -59,6 +59,21 @@ ActiveRecord::Schema.define(version: 2025_01_24_073002) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_corporate_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_corporate_users_on_reset_password_token", unique: true
+  end
+
+  create_table "helpful_marks", force: :cascade do |t|
+    t.integer "question_id", null: false
+    t.integer "user_id", null: false
+    t.integer "corporate_user_id"
+    t.string "ip_address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["corporate_user_id"], name: "index_helpful_marks_on_corporate_user_id"
+    t.index ["question_id", "corporate_user_id"], name: "index_helpful_marks_on_question_id_and_corporate_user_id", unique: true, where: "corporate_user_id IS NOT NULL"
+    t.index ["question_id", "ip_address"], name: "index_helpful_marks_on_question_id_and_ip_address", unique: true, where: "ip_address IS NOT NULL"
+    t.index ["question_id", "user_id"], name: "index_helpful_marks_on_question_id_and_user_id", unique: true, where: "user_id IS NOT NULL"
+    t.index ["question_id"], name: "index_helpful_marks_on_question_id"
+    t.index ["user_id"], name: "index_helpful_marks_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -113,4 +128,7 @@ ActiveRecord::Schema.define(version: 2025_01_24_073002) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "helpful_marks", "corporate_users"
+  add_foreign_key "helpful_marks", "questions"
+  add_foreign_key "helpful_marks", "users"
 end
