@@ -19,10 +19,14 @@
           <p class="text-muted">
             返信: <%= question.question_answers.count %>
           </p>
-          <button class="helpful-btn btn <%= question.helpful_marks.exists?(user_id: current_user&.id) || question.helpful_marks.exists?(ip_address: request.remote_ip) ? 'btn-success' : 'btn-outline-secondary' %>"
+
+          <% liked = question.helpful_marks.where(user_id: current_user&.id)
+                                           .or(question.helpful_marks.where(ip_address: request.remote_ip))
+                                           .exists? %>
+
+          <button class="helpful-btn btn <%= liked ? 'btn-success' : 'btn-outline-secondary' %>"
             data-question-id="<%= question.id %>"
             data-controller="public"
-            onclick="toggleHelpful(<%= question.id %>, 'public')">
             参考になった (<span class="helpful-count"><%= question.helpful_marks.count %></span>)
           </button>
         </div>

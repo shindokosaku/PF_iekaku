@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     end
     resources :questions, only: [:index, :show, :destroy] do
       resources :question_answers, only: [:create, :edit, :update, :destroy]
-      post 'toggle_helpful', to: 'helpful_marks#toggle' #参考になったボタン
+      resource :helpful_mark, only: [],module: :questions do
+        post 'toggle_helpful', to: 'questions/helpful_marks#toggle'  #参考になったボタン
+      end
     end
     resources :corporate_users, only: [:show, :edit, :update] do
       member do
@@ -38,7 +40,9 @@ Rails.application.routes.draw do
   
   scope module: :public do
     resources :questions, only: [:new, :index, :show, :edit, :update, :create, :destroy]do
-      post 'toggle_helpful', to: 'helpful_marks#toggle' #参考になったボタン
+      resource :quesitons, only: [], module: :quesitons do
+        post 'toggle_helpful', to: 'questions/helpful_marks#toggle' #参考になったボタン
+      end
     end
     
     resources :question_answers, only: [:index, :show]
