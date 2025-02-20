@@ -40,9 +40,7 @@ Rails.application.routes.draw do
   
   scope module: :public do
     resources :questions, only: [:new, :index, :show, :edit, :update, :create, :destroy]do
-      resource :quesitons, only: [], module: :quesitons do
         post 'toggle_helpful', to: 'questions/helpful_marks#toggle' #参考になったボタン
-      end
     end
     
     resources :question_answers, only: [:index, :show]

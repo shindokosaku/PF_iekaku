@@ -2,7 +2,7 @@ class CreateHelpfulMarks < ActiveRecord::Migration[6.1]
   def change
     create_table :helpful_marks do |t|
       t.references :question, null: false, foreign_key: true
-      t.references :user, null: false, foreign_key: true
+      t.references :user
       t.references :corporate_user, foreign_key: true
       t.string :ip_address
 

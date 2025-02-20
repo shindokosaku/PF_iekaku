@@ -1,6 +1,6 @@
 class Public::Questions::HelpfulMarksController < ApplicationController
-  module Questions
-    class HelpfulMarksController < ApplicationController
+#  module Questions
+#    class HelpfulMarksController < ApplicationController
       before_action :set_question
 
       def toggle
@@ -10,11 +10,11 @@ class Public::Questions::HelpfulMarksController < ApplicationController
           ip_address: current_user ? nil : request.remote_ip
         )
 
-        @liled = if @helpful_mark.persisted?
+        @liked = if @helpful_mark.persisted?
                    @helpful_mark.destroy
                    false
                  else
-                   @helpful_mark.save
+                   @helpful_mark.save!
                    true
                  end
 
@@ -27,8 +27,8 @@ class Public::Questions::HelpfulMarksController < ApplicationController
       private
 
       def set_question
-        @question = Qusetion.findfind(params[:question_id])
+        @question = Question.find(params[:question_id])
       end
-    end
-  end
+#    end
+#  end
 end

@@ -4,9 +4,15 @@ document.addEventListener("DOMContentLoaded", function () {
     /*クリックした時に関数内の処理を実行する*/
     button.addEventListener("click", function () {
       const questionId = this.dataset.questionId;
-      const controller = this.dataset.controller;  // 'public' or 'admin'
+      let controller = this.dataset.controller;  // 'public' or 'admin'
       /*controllerとquestionIdを組み合わせてリクエストURLを作成*/
-      const url = `/${controller}/questions/${questionId}/toggle_helpful`;
+      if (controller == "public"){
+        controller= "";
+      }
+      else if (controller == "admin"){
+        controller= "admin/";
+      }
+      const url = `/${controller}questions/${questionId}/toggle_helpful.json`;
 
       /*toggle_helpfulアクションの非同期化*/
       fetch(url, {
@@ -21,7 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
           /*ボタンの色を変更*/
-          if (data.status === "added") {
+          console.log(data);
+          if (data.liked === true) {
             this.classList.remove("btn-outline-secondary");
             this.classList.add("btn-success");
           } else {

@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2025_01_29_070918) do
 
   create_table "helpful_marks", force: :cascade do |t|
     t.integer "question_id", null: false
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.integer "corporate_user_id"
     t.string "ip_address"
     t.datetime "created_at", precision: 6, null: false
@@ -130,5 +130,4 @@ ActiveRecord::Schema.define(version: 2025_01_29_070918) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "helpful_marks", "corporate_users"
   add_foreign_key "helpful_marks", "questions"
-  add_foreign_key "helpful_marks", "users"
 end

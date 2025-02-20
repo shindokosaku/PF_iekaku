@@ -28,7 +28,7 @@
 
           <button class="helpful-btn btn <%= liked ? 'btn-success' : 'btn-outline-secondary' %>"
             data-question-id="<%= question.id %>"
-            data-controller="admin"
+            data-controller="admin">
             参考になった(<span class="helpful-count"><%= question.helpful_marks.count %></span>)
           </button>
         </div>
