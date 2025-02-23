@@ -12,7 +12,11 @@ class Public::Questions::HelpfulMarksController < ApplicationController
                    @helpful_mark.destroy
                    false
                  else
-                   @helpful_mark.save!
+                   @helpful_mark.save
+                   pp @helpful_mark
+                   @helpful_mark.errors.full_messages.each do |msg|
+                    pp msg
+                   end
                    true
                  end
 

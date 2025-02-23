@@ -1,5 +1,5 @@
 /*HTMLが読み込み完了したら関数を実行する*/
-document.addEventListener("DOMContentLoaded", function () {
+//document.addEventListener("turbolinks:load", function () {
   document.querySelectorAll(".helpful-btn").forEach(button => {
     /*クリックした時に関数内の処理を実行する*/
     button.addEventListener("click", function () {
@@ -41,4 +41,5 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("Error:", error));
     });
   });
-});
+//});
+

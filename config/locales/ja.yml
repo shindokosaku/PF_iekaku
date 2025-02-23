@@ -11,10 +11,7 @@ ja:
       signed_up: '新規登録が完了しました'
       updated: '情報が更新されました'
       destroyed: 'アカウントが削除されました'
-    errors:
-      messages:
-        taken: 'このメールアドレスは既に登録されています'
-
+    
   flash:
     user:
       sign_up: 'ユーザーとして新規登録が完了しました'
@@ -33,3 +30,12 @@ ja:
   time:
     formats:
       short: "%Y/%m/%d %H:%M"
+
+ja:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "このメールアドレスは既に登録されています"

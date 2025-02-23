@@ -4,7 +4,7 @@ class HelpfulMark < ApplicationRecord
   belongs_to :corporate_user, optional: true
 
   validates :user_id, uniqueness: { scope: :question_id }, if: -> { user_id.present? }
-  validates :ip_address, uniqueness: { scorpe: :question_id }, if: -> { ip_address.present? }
+  validates :ip_address, uniqueness: { scope: :question_id }, if: -> { ip_address.present? }
   validates :corporate_user_id, uniqueness: { scope: :question_id }, if: -> { corporate_user_id.present? }
   validate :user_or_ip_must_exist
 
