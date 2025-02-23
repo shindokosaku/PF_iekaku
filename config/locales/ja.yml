@@ -1,30 +1,33 @@
 ja:
   devise:
     sessions:
-      signed_in: 'ログインしました。'
-      signed_out: 'ログアウトしました。' 
+      signed_in: 'ログインしました'
+      signed_out: 'ログアウトしました' 
       user:
-        signed_out: 'ユーザーとしてログアウトしました。' 
+        signed_out: 'ユーザーとしてログアウトしました' 
       corporate_user:
         signed_out: '社員としてログアウトしました'
     registrations:
-      signed_up: '新規登録が完了しました。'
-      updated: '情報が更新されました。'
-      destroyed: 'アカウントが削除されました。'
+      signed_up: '新規登録が完了しました'
+      updated: '情報が更新されました'
+      destroyed: 'アカウントが削除されました'
+    errors:
+      messages:
+        taken: 'このメールアドレスは既に登録されています'
 
   flash:
     user:
-      sign_up: 'ユーザーとして新規登録が完了しました。'
-      sign_in: 'ユーザーとしてログインしました。'
-      sign_out: 'ユーザーとしてログアウトしました。'
+      sign_up: 'ユーザーとして新規登録が完了しました'
+      sign_in: 'ユーザーとしてログインしました'
+      sign_out: 'ユーザーとしてログアウトしました'
     corporate_user:
-      sign_up: '管理者として新規登録が完了しました。'
-      sign_in: '管理者としてログインしました。'
-      sign_out: '管理者としてログアウトしました。'
+      sign_up: '管理者として新規登録が完了しました'
+      sign_in: '管理者としてログインしました'
+      sign_out: '管理者としてログアウトしました'
 
   errors:
     messages:
-      record_invalid: "入力内容に誤りがあります。再度ご確認ください。"
+      record_invalid: "入力内容に誤りがあります。再度ご確認ください"
   
 ja:
   time:

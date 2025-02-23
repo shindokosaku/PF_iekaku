@@ -1,6 +1,4 @@
 class Public::Questions::HelpfulMarksController < ApplicationController
-#  module Questions
-#    class HelpfulMarksController < ApplicationController
       before_action :set_question
 
       def toggle
@@ -29,6 +27,4 @@ class Public::Questions::HelpfulMarksController < ApplicationController
       def set_question
         @question = Question.find(params[:question_id])
       end
-#    end
-#  end
 end
